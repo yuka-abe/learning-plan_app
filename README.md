@@ -22,3 +22,20 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## users テーブル
+
+| Column     | Type   | Options    |
+| ---------- | ------ | ---------- |
+| nickname   | string | null:false |
+| email      | string | null:false |
+| password   | string | null:false |
+
+##　todays テーブル
+| Column     | Type   | Options    |
+| ---------- | ------ | ---------- |
+| target     | text   |            |
+| todo       | text   |            |
+| time       | text   |            |
+| total      | text   |            |
+| memo       | text   |            |
