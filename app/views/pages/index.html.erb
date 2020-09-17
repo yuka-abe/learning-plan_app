@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=devise-width, initial-scale-1.0">
+    <meta name="google-signin-client_id"content="349707797880-lbjdv74uot48cr9ienpaqfbnvbgms3l7.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Learning Plan</title>
+
+    <!-- CSS -->
+    
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+  
+  <body>
+    <div id="home" class="big-bg">
+      <header class="page-header-wrapper">
+          <h1><a href="index.html"><%= image_tag "top-logo04.png", class:"top-logo"%></a></h1>
+          <nav>
+              <ul class="main-nav">
+                 <% if user_signed_in? %>
+                      <li><%= "#{current_user.nickname}でログイン中" %></li>
+                      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+                 <% else %>
+                      <p>ログインしていません</p>
+                      <li><%= link_to 'login', new_user_session_path %></li>
+                      <li><%= link_to 'signup', new_user_registration_path %></li>
+                 <% end %>
+              </ul>
+          </nav>
+      </header>
+      <div class="home-content wrapper">
+          <h1 class="page-title">Do you like study?</h1>
+             <h1>Would you like to enjoy more?</h1>
+          <p>Learning Planはあなたの勉強をサポートする計画表です。</p>
+          <p>「最初はやる気があったのに続かない・・・」「既製品のノートは書くことが多くてめんどう」と思ったことありませんか？</p>
+          <p>勉強の計画を立てて目標達成までのスケジュール管理を行うため効率良く学習することができます。</p>
+          <div class="button">
+            <%= link_to "新規登録はこちら", new_user_registration_path %>
+            <p>or</p>
+            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
+
+          </div>
+      </div><!-- /.home-content -->
+    </div><!-- /#home -->
+
+    <div class="study-wrapper">
+      <div class="container">
+        <div class="heading">
+          <h2>Make your own Learning Plan!!</h2>
+        </div>
+        <div class="plans">
+          <div class="plan">
+            <div class="plan-icon">
+                <%= image_tag "memo.png", class:"memo-icon"%>
+                <p>TODAY's LIST</p>
+            </div>
+            <p class="text-contents">その日の目標をたてて、TODOリストに午前中、昼、夜など時間帯にわけて記入します。＊POINT*(時間単位ではなく、量単位で設定。一日の勉強が終わったら振り返りコメントを記入する。</p>
+            </div>
+          <div class="plan">
+            <div class="plan-icon">
+              <%= image_tag "week.jpeg", class:"week-icon"%>
+              <p>WEEK Schedule</p>
+            </div>
+            <p class="text-contents">週ごとにスケジュール計画を立ててタスクで管理しましょう。無理のない範囲で詰め込みすぎないことがオススメです。</p>
+          </div>
+          <div class="plan">
+            <div class="plan-icon">
+              <%= image_tag "calendar.png", class:"calendar-icon"%>
+              <p>Month Calendar</p>
+            </div>
+            <p class="text-contents">勉強する科目を記入して、テストや資格試験などのゴールの期限日から逆算してスケジュールを割り振りしていきましょう。勉強を終わらせておくべきデットラインは必ず決めて記入し、無理のない範囲で計画を立てていきましょう。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
