@@ -1,0 +1,22 @@
+<%= form_with model: @user, url:new_user_password_path ,class: 'password-main', local: true do |f| %>
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h2 class='form-header-text'>
+      Forgot your password?
+    </h2>
+  </div>
+
+
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions" %>
+  </div>
+<% end %>
+
+
