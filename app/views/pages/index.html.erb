@@ -22,20 +22,21 @@
           <h1><a href="index.html"><%= image_tag "top-logo04.png", class:"top-logo"%></a></h1>
           <nav>
               <ul class="main-nav">
-                 <% if user_signed_in? %>
+              <div><%= link_to 'マイページ', "#"%></div>
+                <% if user_signed_in? %>
                       <li><%= "#{current_user.nickname}でログイン中" %></li>
                       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-                 <% else %>
+                <% else %>
                       <p>ログインしていません</p>
-                      <li><%= link_to 'login', new_user_session_path %></li>
-                      <li><%= link_to 'signup', new_user_registration_path %></li>
-                 <% end %>
+                      <li><%= link_to 'ログイン', new_user_session_path method: :get %></li>
+                      <li><%= link_to 'アカウント作成', new_user_registration_path method: :get %></li>
+                <% end %>
               </ul>
           </nav>
       </header>
       <div class="home-content wrapper">
           <h1 class="page-title">Do you like study?</h1>
-             <h1>Would you like to enjoy more?</h1>
+            <h1>Would you like to enjoy more?</h1>
           <p>Learning Planはあなたの勉強をサポートする計画表です。</p>
           <p>「最初はやる気があったのに続かない・・・」「既製品のノートは書くことが多くてめんどう」と思ったことありませんか？</p>
           <p>勉強の計画を立てて目標達成までのスケジュール管理を行うため効率良く学習することができます。</p>
@@ -43,6 +44,7 @@
             <%= link_to "新規登録はこちら", new_user_registration_path %>
             <p>or</p>
             <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+            
 
 
           </div>
