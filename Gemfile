@@ -54,12 +54,14 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Devise
-gem 'devise'
+gem 'devise' #ユーザー認証
+gem 'devise-i18n' #deviseのi18n
 
 # Omniauth
-gem 'omniauth-google-oauth2'
-gem 'omniauth-twitter'
-gem "omniauth-rails_csrf_protection"
+gem 'omniauth-google-oauth2' #google認証
+gem 'omniauth-twitter' #twitter認証
+gem "omniauth-rails_csrf_protection" #Omniauthの脆弱性に対応
+gem 'dotenv-rails' #環境変数の設定
 
 group :production do
   gem 'rails_12factor'

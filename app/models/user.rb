@@ -2,10 +2,17 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable,
-          :confirmable,:omniauthable, omniauth_providers: [:twitter, :google_oauth2]
+          :recoverable, :rememberable, :validatable,
+          :omniauthable, omniauth_providers: [:twitter, :google_oauth2]
           
-          
+  with_options presence: true do
+    half_width_alphanumeric = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i # 半角英数どちらも
+
+
+    validates :nickname
+    validates :password, format: { with: half_width_alphanumeric, message: 'Include both letters and numbers' } # 半角英数どちらも
+  end
+
 
 
   def self.find_for_oauth(auth)
@@ -48,4 +55,6 @@ class User < ApplicationRecord
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
   end
+
+  #has_many :pages
 end

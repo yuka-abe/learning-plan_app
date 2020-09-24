@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   root 'pages#index'
   get 'pages/show'
   
-
-  #resources :users,only: [:show]
+  
+  resources :users
 end

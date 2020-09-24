@@ -4,8 +4,8 @@ class PagesController < ApplicationController
 
 
 
-  def index
-
+  def new
+    @page = Page.new
   end
 
   def show
@@ -15,10 +15,14 @@ class PagesController < ApplicationController
   private
 
   def set_user
-    @user = User.find_by(username: params[:username])
+    @user = User.find(params[:id])
   end
 
   def user_paramus
     params.fetch(:user,{}).permit(:username)
+  end
+
+  def set_current_user
+    @current_user = User.find_by(id: session[:user_id])
   end
 end
